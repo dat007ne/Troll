@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire - V.I.P Tool Hack 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #050814;
+            color: #00ff66;
+        }
+        .title-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .matrix-bg {
+            background: linear-gradient(rgba(5, 8, 20, 0.9), rgba(5, 8, 20, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .glow-box {
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+            border: 1px solid rgba(0, 255, 102, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.7);
+        }
+    </style>
+</head>
+<body class="matrix-bg min-h-screen flex flex-col justify-between p-4 md:p-8">
+
+    <!-- Header -->
+    <header class="text-center mb-6">
+        <div class="inline-block px-4 py-1 bg-red-600 text-white font-bold text-xs uppercase rounded-full mb-2 tracking-widest animate-pulse">
+            <i class="fa-solid fa-triangle-exclamation mr-1"></i> Phiên bản Troll vui vẻ v2.6
+        </div>
+        <h1 class="title-font text-3xl md:text-5xl font-black text-red-500 tracking-wider uppercase glow-text">
+            FREE FIRE <span class="text-green-400">HACK V.I.P</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-1">Hệ thống trích xuất thông tin tài khoản tự động (Chỉ để troll bạn bè)</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-xl mx-auto w-full flex-grow flex flex-col justify-center">
+        
+        <!-- Input Card -->
+        <div id="input-card" class="bg-black bg-opacity-80 p-6 rounded-xl glow-box backdrop-blur-md">
+            <div class="mb-4">
+                <label class="block text-green-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                    <i class="fa-solid fa-user-gear mr-2"></i>Nhập ID Nhân Vật Free Fire:
+                </label>
+                <input type="text" id="ff-id" placeholder="Ví dụ: 1289348239" 
+                    class="w-full bg-gray-900 border border-green-500/55 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 font-mono text-lg">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-green-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                    <i class="fa-solid fa-shield-halved mr-2"></i>Chọn Tính Năng Hack:
+                </label>
+                <select class="w-full bg-gray-900 border border-green-500/55 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-400 font-mono">
+                    <option>🔥 Lấy Tài Khoản & Mật Khẩu (Full Access)</option>
+                    <option>💎 Hack 99,999 Kim Cương (Visual)</option>
+                    <option>🎯 Mở Khóa Tất Cả Skin Súng & Quần Áo</option>
+                </select>
+            </div>
+
+            <button onclick="startHack()" 
+                class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-black font-extrabold uppercase py-4 rounded-lg tracking-wider title-font transition-all transform active:scale-95 shadow-lg shadow-green-500/30">
+                <i class="fa-solid fa-terminal mr-2"></i> Bắt Đầu Trích Xuất
+            </button>
+        </div>
+
+        <!-- Terminal Console (Hidden initially) -->
+        <div id="terminal-card" class="hidden bg-black bg-opacity-95 p-5 rounded-xl glow-box border border-green-500 flex flex-col h-80">
+            <div class="flex items-center justify-between border-b border-green-900 pb-2 mb-3">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-xs text-green-500 font-bold ml-2">root@freefire-system:~#</span>
+                </div>
+                <div class="text-xs text-green-400 animate-pulse" id="timer-display">05s</div>
+            </div>
+            
+            <div id="console-logs" class="flex-grow overflow-y-auto text-xs md:text-sm font-mono space-y-1 text-green-400 pr-2">
+                <!-- Logs will be injected here -->
+            </div>
+        </div>
+
+        <!-- Success Modal (Hidden initially) -->
+        <div id="success-modal" class="hidden bg-black bg-opacity-95 p-6 rounded-xl glow-box border-2 border-red-500 text-center animate-bounce-short">
+            <div class="text-5xl text-red-500 mb-3">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2 class="title-font text-2xl font-bold text-red-400 mb-2 uppercase">HACK THÀNH CÔNG!</h2>
+            <p class="text-gray-300 text-sm mb-6">
+                Hệ thống đã trích xuất thành công tài khoản từ ID: <span id="target-id" class="text-green-400 font-bold"></span>
+            </p>
+            <div class="bg-gray-900 p-4 rounded-lg border border-red-500/50 text-left text-xs mb-6 space-y-2">
+                <div class="text-gray-400">📂 Trạng thái: <span class="text-green-400">Đã lưu vào bộ nhớ đệm</span></div>
+                <div class="text-gray-400">🔐 Tài khoản: <span class="text-white font-mono">user_troll_***</span></div>
+                <div class="text-gray-400">🔑 Mật khẩu: <span class="text-white font-mono">*********</span></div>
+            </div>
+            <p class="text-xs text-yellow-400 mb-4 bg-yellow-950/50 p-2 rounded border border-yellow-600/30">
+                ⚠️ Vui lòng check lịch sử hack để lấy thông tin chi tiết tài khoản mật khẩu!
+            </p>
+            <button onclick="resetTool()" 
+                class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-6 rounded-lg uppercase tracking-wider text-sm transition-all">
+                Quay Lại / Troll Tiếp
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-gray-600 mt-6">
+        <p>Trang web này chỉ là giao diện giả lập giải trí (Troll). Không có dữ liệu nào bị xâm phạm.</p>
+    </footer>
+
+    <!-- JavaScript Script -->
+    <script>
+        function startHack() {
+            const idInput = document.getElementById('ff-id').value.trim();
+            if (!idInput) {
+                alert('Vui lòng nhập ID Free Fire!');
+                return;
+            }
+
+            // Hide input, show terminal
+            document.getElementById('input-card').classList.add('hidden');
+            document.getElementById('terminal-card').classList.remove('hidden');
+            
+            const consoleLogs = document.getElementById('console-logs');
+            consoleLogs.innerHTML = '';
+
+            const logs = [
+                `[+] Đang kết nối tới máy chủ Garena Free Fire khu vực VN...`,
+                `[+] Đã kết nối thành công IP: 104.21.58.12`,
+                `[+] Đang xác thực ID mục tiêu: ${idInput}...`,
+                `[+] Tìm thấy tài khoản! Tên nhân vật: [PRO] _Troll_User_`,
+                `[+] Đang vượt qua hệ thống tường lửa Anti-Cheat...`,
+                `[+] Đang trích xuất mã token và cơ sở dữ liệu đăng nhập...`,
+                `[+] Giải mã gói tin thành công...`,
+                `[+] Hoàn tất tiến trình. Đang chuẩn bị xuất thông tin...`
+            ];
+
+            let index = 0;
+            let secondsLeft = 5;
+            
+            // Countdown timer display
+            const timerInterval = setInterval(() => {
+                secondsLeft--;
+                if(secondsLeft >= 0) {
+                    document.getElementById('timer-display').innerText = `0${secondsLeft}s`;
+                }
+            }, 1000);
+
+            // Log printer interval
+            const logInterval = setInterval(() => {
+                if (index < logs.length) {
+                    const p = document.createElement('div');
+                    p.innerText = logs[index];
+                    if(index === logs.length - 1) {
+                        p.className = "text-green-300 font-bold";
+                    }
+                    consoleLogs.appendChild(p);
+                    consoleLogs.scrollTop = consoleLogs.scrollHeight;
+                    index++;
+                } else {
+                    clearInterval(logInterval);
+                    clearInterval(timerInterval);
+                    
+                    // After 5 seconds, switch to success modal
+                    setTimeout(() => {
+                        document.getElementById('terminal-card').classList.add('hidden');
+                        document.getElementById('success-modal').classList.remove('hidden');
+                        document.getElementById('target-id').innerText = idInput;
+                    }, 800);
+                }
+            }, 550);
+        }
+
+        function resetTool() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('input-card').classList.remove('hidden');
+            document.getElementById('ff-id').value = '';
+        }
+    </script>
+</body>
+</html>
